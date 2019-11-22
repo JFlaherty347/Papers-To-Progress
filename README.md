@@ -41,6 +41,11 @@ Here is the result of the above image after being transformed and cropped:
 
 ![Result image](https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Aligned.jpg)
 
+Now, the image of the completed form has been transformed to match the template, but it still contains all of the writing from
+the completed form. This in effect has allowed any picture of the form to be used with Papers to Progress without having to 
+take a perfectly aligned image. As a result, the ease of use is increased and requires the end-user to only know how to snap
+a picture on their smartphone.
+
 ### How does Papers to Progress Help?
 Our project was inspired by the stories of the medical professionals our team met at Health++. They told us of a time where they
 had hired people to manually enter medical records into a database for several hours and how it helped them create a more
