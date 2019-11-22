@@ -21,6 +21,26 @@ and lawmakers.
 
 ![image of data pipeline](https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Images/DataCollectionStages.png)
 
+### How does the Code in this Repository Prepare the Photo for OCR?
+This code utilizes the OpenCV library for python to find and apply a [homography](https://en.wikipedia.org/wiki/Homography_(computer_vision)) to the users input image in
+comparison to the template image. This code uses [ORB](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_orb/py_orb.html) in order to find matching points between the input and the template 
+images. The reference points that orbs find may look something like the following example:
+
+![Reference point image](https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Matches.jpg)
+
+In this example, a printed form was created with handwriting on it and is about to be added into the database. The left image  is the new form to be added to the database and the image on the right is the template for that form. The colored circles show
+reference points that ORB has found between the two images. For each circle, there is a corresponding circle on the other image,
+connected by a line. These are used to find a homography which is then used to warp the perspective of the image.
+
+After the image is warped, there will likely be unecessary visual noise leftover past the paper since the transormation was
+done exclusively with regard to the paper. To fix this, [all contours in the image](https://docs.opencv.org/master/d4/d73/tutorial_py_contours_begin.html) are found are sorted by size.
+The biggest contour is assumed to be the page, as if there were a contour larger than the page in the image, the existing part of
+the image with the actual form on it is likely to small to be accurately handled by OCR anyways. Now that the paper has been
+found, the image is cropped to the size of the paper which can then be lined up with the fields set for the template of the form.
+Here is the result of the above image after being transformed and cropped:
+
+![Result image](https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Aligned.jpg)
+
 ### How does Papers to Progress Help?
 Our project was inspired by the stories of the medical professionals our team met at Health++. They told us of a time where they
 had hired people to manually enter medical records into a database for several hours and how it helped them create a more
