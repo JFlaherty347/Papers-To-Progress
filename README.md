@@ -17,7 +17,7 @@ to allow hospitals to stay with their current paper record system while also gen
 records being filed away where they will most likely not be seen again, their anonymized data is made available to researchers
 and lawmakers. 
 
-![image of data pipeline] ()
+![image of data pipeline](https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Images/DataCollectionStages.png)
 
 ### How does Papers to Progress Help?
 Our project was inspired by the stories of the medical professionals our team met at Health++. They told us of a time where they
