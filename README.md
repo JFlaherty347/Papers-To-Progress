@@ -3,7 +3,9 @@
 ### What is this Repository?
 This repository holds an excerpt of code written by me as a part of a project [I worked on at Stanford's Health++ 2019 Hackathon](https://healthplusplus19.devpost.com/?ref_content=default&ref_feature=challenge&ref_medium=discover).
 The code presented here is a computer vision algorithm that takes an image of a paper as input, and corrects the image so it can
-be more easily read and categorized by the google cloud's OCR.
+be more easily read and categorized by the google cloud's OCR. Please note that this repository was created after the event
+for the purpose of presenting the code specifically written by me and as a result, it only has small commits since the code
+was finished prior to the creation of this repository.
 
 ### What is Papers to Progress?
 Papers to progress is a medical record digitalization pipeline that allows for data insights into the healthcare in devloping
