@@ -62,18 +62,26 @@ def getAlignedImage(image, reference):
 	imgG = cv2.cvtColor(result, cv2.COLOR_BGR2GRAY)
 	blur = cv2.GaussianBlur(src = imgG, ksize = (5,5), sigmaX = 0)
 	t, binary = cv2.threshold(src = blur,thresh = 127, maxval = 255, type = cv2.THRESH_BINARY)
-	contours, _ = cv2.findContours(image = binary, mode = cv2.RETR_EXTERNAL, method = cv2.CHAIN_APPROX_SIMPLE)
+	_image, contours, _hierarchy = cv2.findContours(image = binary, mode = cv2.RETR_EXTERNAL, method = cv2.CHAIN_APPROX_SIMPLE)
+
+	#Get biggest contour by area(should be the paper)
+	areas = []
+	for c in contours:
+		areas.append(cv2.contourArea(c))
+
+	sortedAreas = sorted(zip(areas, contours), key = lambda x: x[0], reverse = True)
+	biggestContour = sortedAreas[0][1] #0 = largest area, 1 = contour
 
 	#update bounding rectangles
 	cornerMinX = 0
 	cornerMinY = 0
-	for c in contours:
-		x, y, w, h = cv2.boundingRect(c)
-		
-		cornerMinX = x
-		cornerMinY = y
+	
+	#find bounded rect for cropping boundaries
+	x, y, w, h = cv2.boundingRect(biggestContour)
+	cornerMinX = x
+	cornerMinY = y
 
-		print("x: ", x, "; y: ", y)
+	print("x: ", x, "; y: ", y)
 
 	#crop the image
 	crop = result[cornerMinY:cornerMinY+height, cornerMinX:cornerMinX+width]
