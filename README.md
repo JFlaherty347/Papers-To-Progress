@@ -4,8 +4,8 @@
 This repository holds an excerpt of code written by me as a part of a project [I worked on at Stanford's Health++ 2019 Hackathon](https://healthplusplus19.devpost.com/?ref_content=default&ref_feature=challenge&ref_medium=discover).
 The code presented here is a computer vision algorithm that takes an image of a paper as input, and corrects the image so it can
 be more easily read and categorized by the google cloud's OCR. Please note that this repository was created after the event
-for the purpose of presenting the code specifically written by me and as a result, it only has small commits since the code
-was finished prior to the creation of this repository.
+for the purpose of presenting the code specifically written by me and as a result, it only has improvements made after the event. Please keep in mind that the event was only 24 hours long during which our group not only had to produce a proof of concept but 
+also a business plan for implementing our global health solution.
 
 ### What is Papers to Progress?
 Papers to progress is a medical record digitalization pipeline that allows for data insights into the healthcare in devloping
@@ -20,6 +20,31 @@ records being filed away where they will most likely not be seen again, their an
 and lawmakers. 
 
 ![image of data pipeline](https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Images/DataCollectionStages.png)
+
+### How does the Code in this Repository Prepare the Photo for OCR?
+This code utilizes the OpenCV library for python to find and apply a [homography](https://en.wikipedia.org/wiki/Homography_(computer_vision)) to the users input image in
+comparison to the template image. This code uses [ORB](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_orb/py_orb.html) in order to find matching points between the input and the template 
+images. The reference points that orbs find may look something like the following example:
+
+<img src="https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Matches.jpg" alt="Reference point image" width="1000">
+
+In this example, a printed form was created with handwriting on it and is about to be added into the database. The left image  is the new form to be added to the database and the image on the right is the template for that form. The colored circles show
+reference points that ORB has found between the two images. For each circle, there is a corresponding circle on the other image,
+connected by a line. These are used to find a homography which is then used to warp the perspective of the image.
+
+After the image is warped, there will likely be unecessary visual noise leftover past the paper since the transormation was
+done exclusively with regard to the paper. To fix this, [all contours in the image](https://docs.opencv.org/master/d4/d73/tutorial_py_contours_begin.html) are found are sorted by size.
+The biggest contour is assumed to be the page, as if there were a contour larger than the page in the image, the existing part of
+the image with the actual form on it is likely to small to be accurately handled by OCR anyways. Now that the paper has been
+found, the image is cropped to the size of the paper which can then be lined up with the fields set for the template of the form.
+Here is the result of the above image after being transformed and cropped:
+
+<img src="https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Aligned.jpg" alt="Result image" width="500">
+
+Now, the image of the completed form has been transformed to match the template, but it still contains all of the writing from
+the completed form. This in effect has allowed any picture of the form to be used with Papers to Progress without having to 
+take a perfectly aligned image. As a result, the ease of use is increased and requires the end-user to only know how to snap
+a picture on their smartphone.
 
 ### How does Papers to Progress Help?
 Our project was inspired by the stories of the medical professionals our team met at Health++. They told us of a time where they
