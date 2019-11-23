@@ -39,7 +39,7 @@ the image with the actual form on it is likely to small to be accurately handled
 found, the image is cropped to the size of the paper which can then be lined up with the fields set for the template of the form.
 Here is the result of the above image after being transformed and cropped:
 
-<img src="https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Aligned.jpg" alt="Result image" width="500">
+<img src="https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Aligned.jpg" alt="Result image" width="400">
 
 Now, the image of the completed form has been transformed to match the template, but it still contains all of the writing from
 the completed form. This in effect has allowed any picture of the form to be used with Papers to Progress without having to 
