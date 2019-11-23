@@ -26,8 +26,7 @@ This code utilizes the OpenCV library for python to find and apply a [homography
 comparison to the template image. This code uses [ORB](https://docs.opencv.org/3.0-beta/doc/py_tutorials/py_feature2d/py_orb/py_orb.html) in order to find matching points between the input and the template 
 images. The reference points that orbs find may look something like the following example:
 
-<img src="https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Matches.jpg" alt="Reference point image" width="500">
-![Reference point image](https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Matches.jpg | width = 500)
+<img src="https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Matches.jpg" alt="Reference point image" width="1000">
 
 In this example, a printed form was created with handwriting on it and is about to be added into the database. The left image  is the new form to be added to the database and the image on the right is the template for that form. The colored circles show
 reference points that ORB has found between the two images. For each circle, there is a corresponding circle on the other image,
@@ -40,7 +39,7 @@ the image with the actual form on it is likely to small to be accurately handled
 found, the image is cropped to the size of the paper which can then be lined up with the fields set for the template of the form.
 Here is the result of the above image after being transformed and cropped:
 
-![Result image](https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Aligned.jpg | width = 750)
+<img src="https://github.com/JFlaherty347/Papers-To-Progress/blob/master/Output/Aligned.jpg" alt="Result image" width="750">
 
 Now, the image of the completed form has been transformed to match the template, but it still contains all of the writing from
 the completed form. This in effect has allowed any picture of the form to be used with Papers to Progress without having to 
