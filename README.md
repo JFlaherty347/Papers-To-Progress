@@ -68,4 +68,4 @@ Finally, we addressed the computing requirements by creating a pipeline that req
 while saving the machine learning for the cloud.
 
 ### What was achieved at the event?
-At this event, we developed a proof of concept that involved the image preparation and OCR stages of the data pipeline. If granted more time, we would have implemented our planned data cleaning processes and improved the user interface. We primarily focused on perfecting the data pipeline design and implementing the back-end carefully. Ultimately, the event was an amazing learning experience which all of the Papers to Progress team values.
+At this event, we developed a proof of concept that involved the image preparation and OCR stages of the data pipeline. If granted more time, we would have implemented our planned data cleaning processes and improved the user interface. We primarily focused on perfecting the data pipeline design and implementing the back-end carefully. Ultimately, the event was an amazing learning experience which the entire Papers to Progress team values.
